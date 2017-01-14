@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans+Condensed:400,400i,600|Roboto+Slab:300,700&subset=all");
+
+.remark-slide-content {
+  color        : hsl(30, 35%, 20%);
+  font         : 25px/1.4 "Fira Sans Condensed", sans-serif;
+  font-variant : common-ligatures oldstyle-nums;
+}
+
+.remark-slide-content h1, h2, h3 {
+  font-family : "Roboto Slab";
+}
+
+.remark-slide-content h1 {
+  font-size   : 3em;
+  font-weight : 300;
+}
+
+.remark-slide-content h2 {
+  font-size   : 2em;
+  font-weight : 300;
+}
+
+.remark-slide-content h3 {
+  font-size : 1em;
+}
+.remark-container {
+  background : hsl(0, 0%, 40%);
+}
+
+.remark-slide-scaler {
+  box-shadow : 0 0 20px 11px hsla(0, 0%, 0%, 0.2);
+}
+
+.remark-slide-content {
+  background : hsl(30, 35%, 88%);
+}
+
+.remark-code, .remark-inline-code {
+  font-family : "Fira Mono";
+}
+
+.remark-code {
+  border-left : 0.2em solid #acd;
+  background  : #f6f6f6 !important;
+}
+
+.remark-inline-code {
+  font-size  : 0.7em;
+  background : #f6f6f6 !important;
+  border     : 1px solid #ddd;
+  padding    : 0 0.2em;
+}

@@ -5,23 +5,26 @@
 }
 
 .remark-slide-content {
-  color        : hsl(30, 35%, 27%);
-  font         : 25px/1.4 "Fira Sans Condensed", sans-serif;
-  font-variant : common-ligatures oldstyle-nums;
-  flex         : 1;
-  display      : flex;
+  color          : hsl(30, 35%, 27%);
+  font           : 25px/1.4 "Fira Sans Condensed", sans-serif;
+  font-variant   : common-ligatures oldstyle-nums;
+  flex           : 1;
+  display        : flex;
+  flex-direction : column;
+  padding        : 3em 4em;
 }
 
 .remark-slide-content h1, h2, h3 {
   font-family : "Roboto Slab";
+  margin      : 0;
 }
 
 .remark-slide-content h1 {
   font-size   : 3em;
   font-weight : 300;
   align-self  : center;
-  flex        : 1;
   text-align  : center;
+  margin      : auto;
 }
 
 .remark-slide-content h2 {

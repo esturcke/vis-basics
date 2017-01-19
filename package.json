@@ -15,6 +15,6 @@
     "sass-generate": "node-sass --output . --source-map . style.scss",
     "sass-watch": "node-sass --watch --output . --source-map . style.scss",
     "sass": "yarn sass-generate && yarn sass-watch",
-    "start": "concurrently --kill-others \"yarn serve\" \"yarn sass\""
+    "start": "concurrently --raw --kill-others \"yarn serve\" \"yarn sass\""
   }
 }

@@ -1,0 +1,12 @@
+{
+  "name": "vis-basics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:esturcke/vis-basics.git",
+  "author": "Erik J. Sturcke <erik@sturcke.co>",
+  "license": "CC-BY-SA-4.0",
+  "dependencies": {
+    "live-server": "^1.2.0",
+    "node-sass": "^4.3.0"
+  }
+}

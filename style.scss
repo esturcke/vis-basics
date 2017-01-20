@@ -1,5 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans+Condensed:400,400i,600|Roboto+Slab:300,700&subset=all");
 
+$slide-color : hsl(30, 35%, 88%);
+$text-color  : hsl(30, 35%, 27%);
+
+@mixin text-shadow-to-crop-underline($color) {
+  text-shadow : .03em 0 $color, -.03em 0 $color, 0 .03em $color, 0 -.03em $color, .06em 0 $color, -.06em 0 $color, .09em 0 $color, -.09em 0 $color, .12em 0 $color, -.12em 0 $color, .15em 0 $color, -.15em 0 $color;
+}
+
+@mixin underline($color, $underline-color : $color, $background-color : $slide-color) {
+  @include text-shadow-to-crop-underline($background-color);
+  color               : $color;
+  text-decoration     : none;
+  background-image    : linear-gradient($background-color, $background-color), linear-gradient($background-color, $background-color), linear-gradient($underline-color, $underline-color);
+  background-size     : .05em 1px, .05em 1px, 1px 1px;
+  background-repeat   : no-repeat, no-repeat, repeat-x;
+  background-position : 0% 90%, 100% 90%, 0% 90%;
+}
+
 .remark-container {
   background : hsl(0, 0%, 40%);
 
@@ -10,15 +27,19 @@
       display : flex;
     
       .remark-slide-content {
-        color          : hsl(30, 35%, 27%);
-        background     : hsl(30, 35%, 88%);
+        color          : $text-color;
+        background     : $slide-color;
         font           : 25px/1.4 "Fira Sans Condensed", sans-serif;
         font-variant   : common-ligatures oldstyle-nums;
         flex           : 1;
         display        : flex;
         flex-direction : column;
         padding        : 3em 4em;
-    
+
+        a {
+          @include underline($text-color);
+        }
+
         h1, h2, h3 {
           font-family : "Roboto Slab", serif;
           margin      : 0;

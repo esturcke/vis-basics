@@ -1,0 +1,4 @@
+---
+rules :
+  indentation     : 2
+  max-empty-lines : 1

@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans+Condensed:400,400i,600|Roboto+Slab:300,700&subset=all");
 
-$selection-color  : #b4d5fe;
-$slide-color      : hsl(30, 35%, 88%);
-$text-color       : hsl(30, 35%, 20%);
-$text-color-light : hsl(30, 35%, 27%);
+$selection-color       : #b4d5fe;
+$backdrop-color        : hsl(0, 0, 40%);
+$shadow-color          : hsla(0, 0%, 0%, 0.2);
+$slide-color           : hsl(30, 35%, 88%);
+$text-color            : hsl(30, 35%, 20%);
+$text-color-light      : hsl(30, 35%, 27%);
+$accent-color          : hsl(20, 89%, 36%);
+$highlight-color       : hsla(226, 100%, 77%, 0.31);
+$code-color            : hsl(0, 0, 86%);
+$code-background-color : hsl(0, 0, 25%);
 
 @mixin text-shadow-to-crop-underline($color) {
   text-shadow : .03em 0 $color, -.03em 0 $color, 0 .03em $color, 0 -.03em $color, .06em 0 $color, -.06em 0 $color, .09em 0 $color, -.09em 0 $color, .12em 0 $color, -.12em 0 $color, .15em 0 $color, -.15em 0 $color;
@@ -25,10 +31,10 @@ $text-color-light : hsl(30, 35%, 27%);
 }
 
 .remark-container {
-  background : hsl(0, 0%, 40%);
+  background : $backdrop-color;
 
   .remark-slide-scaler {
-    box-shadow : 0 0 20px 11px hsla(0, 0%, 0%, 0.2);
+    box-shadow : 0 0 20px 11px $shadow-color;
 
     .remark-slide {
       display : flex;
@@ -44,14 +50,15 @@ $text-color-light : hsl(30, 35%, 27%);
         padding        : 3em 4em;
 
         a {
-          @include underline($text-color);
+          @include underline($text-color, $accent-color);
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
+          color       : $text-color-light;
           font-family : "Roboto Slab", serif;
           margin      : 0;
         }
-      
+     
         h1 {
           font-size   : 3em;
           font-weight : 300;
@@ -61,28 +68,49 @@ $text-color-light : hsl(30, 35%, 27%);
         }
         
         h2 {
+          font-size   : 3em;
+          font-weight : 300;
+          align-self  : center;
+          margin      : auto;
+        }
+
+        h3 {
           font-size   : 2em;
           font-weight : 300;
         }
         
-        h3 {
+        h4 {
           font-size : 1em;
         }
 
-        .remark-code, .remark-inline-code {
-          font-family : "Fira Mono", monospace;
+        blockquote {
+          font-size   : 1.6em;
+          font-style  : italic;
+          align-self  : center;
+          margin      : auto 5rem;
+
+          cite {
+            display    : block;
+            text-align : right;
+            font-style : normal;
+            font-size  : 0.8em; 
+          }
         }
-        
-        .remark-code {
-          border-left : 0.2em solid #acd;
-          background  : #f6f6f6 !important;
+
+        .remark-code, .remark-inline-code {
+          font             : 0.76em "Fira Mono", monospace;
+          color            : $code-color;
+          background-color : $code-background-color;
         }
         
         .remark-inline-code {
-          font-size  : 0.7em;
-          background : #f6f6f6 !important;
-          border     : 1px solid #ddd;
-          padding    : 0 0.2em;
+          padding  : 0.2em 0.4em;
+          position : relative;
+          top      : -0.04em;
+        }
+
+        .remark-code-line-highlighted {
+          background-color : $highlight-color;
         }
       }
     }

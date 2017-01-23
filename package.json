@@ -11,7 +11,7 @@
     "node-sass": "^4.3.0"
   },
   "scripts": {
-    "serve": "live-server --watch=\"index.html,style.css\"",
+    "serve": "live-server --watch=\"index.html,style.css,readme.md\"",
     "sass-generate": "node-sass --output . --source-map . style.scss",
     "sass-watch": "node-sass --watch --output . --source-map . style.scss",
     "sass": "yarn sass-generate && yarn sass-watch",

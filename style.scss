@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans+Condensed:400,400i,600|Roboto+Slab:300,700&subset=all");
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans+Condensed:400,400i,600|Roboto+Slab:300,400&subset=all");
 
 $selection-color       : #b4d5fe;
 $backdrop-color        : hsl(0, 0, 40%);
@@ -11,18 +11,37 @@ $highlight-color       : hsla(226, 100%, 77%, 0.31);
 $code-color            : hsl(0, 0, 86%);
 $code-background-color : hsl(0, 0, 25%);
 
-@mixin text-shadow-to-crop-underline($color) {
-  text-shadow : .03em 0 $color, -.03em 0 $color, 0 .03em $color, 0 -.03em $color, .06em 0 $color, -.06em 0 $color, .09em 0 $color, -.09em 0 $color, .12em 0 $color, -.12em 0 $color, .15em 0 $color, -.15em 0 $color;
+$base-font-size    : 36px;
+$base-line-height  : calc(4/3);
+$tight-line-height : 1.2;
+
+@mixin text-shadow-to-crop-underline($color, $size : .03em) {
+  text-shadow :
+    0 $size *  1 $color,
+    0 $size * -1 $color,
+    $size *  1 0 $color, 
+    $size * -1 0 $color,
+    $size *  2 0 $color,
+    $size * -2 0 $color,
+    $size *  3 0 $color,
+    $size * -3 0 $color,
+    $size *  4 0 $color,
+    $size * -4 0 $color,
+    $size *  5 0 $color,
+    $size * -5 0 $color;
 }
 
 @mixin underline($color, $underline-color : $color, $background-color : $slide-color) {
   @include text-shadow-to-crop-underline($background-color);
   color               : $color;
   text-decoration     : none;
-  background-image    : linear-gradient($background-color, $background-color), linear-gradient($background-color, $background-color), linear-gradient($underline-color, $underline-color);
   background-size     : .05em 1px, .05em 1px, 1px 1px;
   background-repeat   : no-repeat, no-repeat, repeat-x;
   background-position : 0% 90%, 100% 90%, 0% 90%;
+  background-image    :
+    linear-gradient($background-color, $background-color),
+    linear-gradient($background-color, $background-color),
+    linear-gradient($underline-color,  $underline-color);
 
   &::selection {
     @include text-shadow-to-crop-underline($selection-color);
@@ -31,6 +50,7 @@ $code-background-color : hsl(0, 0, 25%);
 }
 
 .remark-container {
+  font-size  : $base-font-size;
   background : $backdrop-color;
 
   .remark-slide-scaler {
@@ -42,25 +62,30 @@ $code-background-color : hsl(0, 0, 25%);
       .remark-slide-content {
         color          : $text-color;
         background     : $slide-color;
-        font           : 25px/1.4 "Fira Sans Condensed", sans-serif;
+        font           : 1rem/$base-line-height "Fira Sans Condensed", sans-serif;
         font-variant   : common-ligatures oldstyle-nums;
         flex           : 1;
         display        : flex;
         flex-direction : column;
-        padding        : 3em 4em;
+        padding        : 2.5em 3.5em;
 
         a {
           @include underline($text-color, $accent-color);
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3 {
           color       : $text-color-light;
           font-family : "Roboto Slab", serif;
           margin      : 0;
+          line-height : $tight-line-height;
+
+          a {
+            @include underline($text-color-light, $accent-color);
+          }
         }
      
         h1 {
-          font-size   : 3em;
+          font-size   : 2rem;
           font-weight : 300;
           align-self  : center;
           text-align  : center;
@@ -68,32 +93,50 @@ $code-background-color : hsl(0, 0, 25%);
         }
         
         h2 {
-          font-size   : 3em;
+          font-size   : 2rem;
           font-weight : 300;
           align-self  : center;
           margin      : auto;
         }
 
         h3 {
-          font-size   : 2em;
-          font-weight : 300;
+          font-size   : 1.2rem;
+          font-weight : 400;
         }
         
-        h4 {
-          font-size : 1em;
-        }
-
         blockquote {
-          font-size   : 1.6em;
+          color       : $text-color-light;
+          font-size   : 1.4em;
           font-style  : italic;
           align-self  : center;
-          margin      : auto 5rem;
+          margin      : auto 2rem;
+          line-height : $tight-line-height;
+          position    : relative;
+
+          &::before, &::after {
+            content    : "";
+            border-top : 1px solid $accent-color;
+            width      : 5em;
+            display    : block;
+            margin     : auto;
+          }
 
           cite {
+            @include text-shadow-to-crop-underline($slide-color, 0.1em);
             display    : block;
-            text-align : right;
             font-style : normal;
-            font-size  : 0.8em; 
+            font-size  : 0.5em; 
+            position   : absolute;
+            left       : 0;
+            right      : 0;
+            bottom     : -0.5em;
+            text-align : center;
+            z-index    : 1;
+
+            &::selection {
+              @include text-shadow-to-crop-underline($selection-color, 0.1em);
+              background : $selection-color;
+            }
           }
         }
 

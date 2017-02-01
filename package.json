@@ -8,7 +8,7 @@
   "dependencies": {
     "concurrently": "^3.1.0",
     "live-server": "^1.2.0",
-    "node-sass": "^4.3.0"
+    "node-sass": "^4.5.0"
   },
   "scripts": {
     "serve": "live-server --watch=\"index.html,style.css,readme.md\"",

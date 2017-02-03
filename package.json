@@ -11,6 +11,8 @@
     "node-sass": "^4.5.0"
   },
   "scripts": {
+    "push": "yarn sass-generate && yarn push-assets",
+    "push-assets": "rsync -avz -e ssh index.html style.css readme.md *.png *.jpg covode:~/sturcke.co/vis-basics/",
     "serve": "live-server --watch=\"index.html,style.css,readme.md\"",
     "sass-generate": "node-sass --output . --source-map . style.scss",
     "sass-watch": "node-sass --watch --output . --source-map . style.scss",

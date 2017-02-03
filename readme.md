@@ -26,7 +26,7 @@ class: columns
 
 --
 
-![Visual Analysis & Design](vad-book.png)
+![Visual Analysis & Design](vad-book.jpg)
 
 ???
 
